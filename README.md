@@ -9,6 +9,5 @@ Simple C# code. Able to use it in GDScript with Godot4(C# Support).
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="MongoDB.Driver" Version="2.22.0"/>
-    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3"/>
   </ItemGroup>
 </Project>
