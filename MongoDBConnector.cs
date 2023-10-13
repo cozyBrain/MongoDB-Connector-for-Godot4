@@ -10,7 +10,7 @@ using System;
 public partial class MongoDBConnector : Node
 {
     private IMongoDatabase database;
-	private MongoClient mongo_client;
+    private MongoClient mongo_client;
     public void Connect(string connection_uri, string database_name)
     {
         try{
@@ -25,7 +25,7 @@ public partial class MongoDBConnector : Node
 
     // C.R.U.D.
     // Create
-	public void InsertData(string collection_name, Godot.Collections.Dictionary<string, Variant> data)
+    public void InsertData(string collection_name, Godot.Collections.Dictionary<string, Variant> data)
     {
         var bsonDocument = ConvertDictionaryToBsonDocument(data);
         var collection = database.GetCollection<BsonDocument>(collection_name);
@@ -93,7 +93,7 @@ public partial class MongoDBConnector : Node
     private static Godot.Collections.Array<Godot.Collections.Dictionary> BsonDocsToDictionaries(List<BsonDocument> bson_docs){
         var dictionaries = new Godot.Collections.Array<Godot.Collections.Dictionary>();
         foreach (BsonDocument doc in bson_docs){
-            doc["_id"] = doc["_id"].ToString(); // Need to convert ObjectId("blabla") to "ObjectId"
+            doc["_id"] = doc["_id"].ToString(); // Need to convert ObjectId("blabla") to "blabla"
             dictionaries.Add((Godot.Collections.Dictionary)Json.ParseString(doc.ToJson()));
         }
         return dictionaries;
